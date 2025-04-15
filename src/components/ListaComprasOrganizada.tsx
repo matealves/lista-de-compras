@@ -164,7 +164,11 @@ export default function ListaComprasPremium() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => selecionarTodas(!temSelecionadas)}
-            className="px-4 py-2 bg-gray-100 rounded-lg font-medium"
+            className={`px-4 py-2 rounded-lg font-semibold transition ${
+              temSelecionadas
+                ? "bg-yellow-500 text-white"
+                : "bg-emerald-500 text-white"
+            }`}
           >
             {temSelecionadas ? "Desmarcar todas" : "Marcar todas"}
           </motion.button>
