@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛒 **Lista de Compras** 🎉
 
-## Getting Started
+Bem-vindo ao **Lista de Compras**, uma aplicação moderna e interativa para gerenciar suas compras de forma eficiente e divertida! 💡🚀 Desenvolvida com **React**, **Next.js**, **TypeScript**, **TailwindCSS**, **Framer Motion**, e **React DnD**, esta aplicação proporciona uma experiência de usuário fluída com recursos como arrastar e soltar (drag and drop) e muito mais!
 
-First, run the development server:
+## 🚀 Tecnologias Utilizadas
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **React**: A biblioteca JavaScript para criar interfaces de usuário interativas. ⚛️
+- **Next.js**: Framework para renderização do lado servidor e construção de aplicativos web rápidos e escaláveis. 🌐
+- **TypeScript**: Superset do JavaScript que oferece tipagem estática para evitar erros e melhorar a manutenção do código. 💻
+- **TailwindCSS**: Framework CSS que facilita a estilização de forma rápida e eficiente. 🎨
+- **Framer Motion**: Biblioteca para animações e transições no React, proporcionando uma interface interativa e atraente. ✨
+- **React DnD (@hello-pangea/dnd)**: Implementação de drag and drop (arrastar e soltar) para organizar os itens na lista de compras de forma intuitiva. 🔄
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📋 Funcionalidades
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **📦 Organize seus Itens**: Arraste e solte os itens para organizar a lista conforme suas necessidades. 📦
+- **✅ Marcação de Itens Comprados**: Marque os itens como comprados e veja a sua lista ser atualizada automaticamente! 🛍️
+- **💾 Persistência no `localStorage`**: A aplicação salva seus itens e progresso diretamente no `localStorage`, permitindo que você retome sua lista de compras sempre que voltar ao aplicativo, mesmo após fechar o navegador. 🖥️🔄
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🌍 Teste a Aplicação
 
-## Learn More
+Para testar a aplicação **Lista de Compras** diretamente no navegador, clique no link abaixo:
 
-To learn more about Next.js, take a look at the following resources:
+[**Teste na Vercel**]() 🚀
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🤝 Contribuindo
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Contribuições são sempre bem-vindas! Se você quiser melhorar o projeto, basta abrir uma **issue** ou enviar um **pull request**. Antes de contribuir, por favor, leia o guia de contribuição e certifique-se de que o código está bem testado e segue os padrões do projeto.
 
-## Deploy on Vercel
+## 📄 Licença
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Este projeto é licenciado sob a [MIT License](LICENSE).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+Obrigado por utilizar o **Lista de Compras**! Se você gostou, por favor, dê uma estrela no repositório e compartilhe com seus amigos! ✨
