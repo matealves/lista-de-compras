@@ -112,7 +112,7 @@ export default function ListaComprasPremium() {
               value={novoItem}
               onChange={(e) => setNovoItem(e.target.value)}
               placeholder="Digite o nome do item"
-              className="w-full p-4 pr-12 border rounded-xl bg-white text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 dark:bg-gray-800 dark:text-white dark:placeholder:text-gray-400"
+              className="w-full p-4 pr-12 border rounded-xl bg-white text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
             />
             <motion.button
               whileHover={{ scale: 1.1 }}
@@ -133,7 +133,7 @@ export default function ListaComprasPremium() {
                 placeholder="Preço unitário"
                 min="0"
                 step="0.01"
-                className="w-full p-4 border rounded-xl bg-white text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 dark:bg-gray-800 dark:text-white dark:placeholder:text-gray-400"
+                className="w-full p-4 border rounded-xl bg-white text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
               />
             </motion.div>
 
@@ -141,7 +141,7 @@ export default function ListaComprasPremium() {
               <select
                 value={categoriaSelecionada}
                 onChange={(e) => setCategoriaSelecionada(e.target.value)}
-                className="w-full p-4 border rounded-xl bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 dark:bg-gray-800 dark:text-white"
+                className="w-full p-4 border rounded-xl bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"
               >
                 {categorias.map((cat) => (
                   <option key={cat} value={cat}>
