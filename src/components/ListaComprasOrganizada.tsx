@@ -106,16 +106,13 @@ export default function ListaComprasPremium() {
         className="sticky top-20 z-10 bg-white p-5 mx-4 mt-4 rounded-xl shadow-lg border border-gray-200"
       >
         <form onSubmit={handleSubmit} className="space-y-3">
-          <motion.div
-            whileFocus={{ boxShadow: "0 0 0 2px rgba(16, 185, 129, 0.5)" }}
-            className="relative"
-          >
+          <motion.div className="relative">
             <input
               type="text"
               value={novoItem}
               onChange={(e) => setNovoItem(e.target.value)}
               placeholder="Digite o nome do item"
-              className="w-full p-4 pr-12 border rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              className="w-full p-4 pr-12 border rounded-xl bg-white text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 dark:bg-gray-800 dark:text-white dark:placeholder:text-gray-400"
             />
             <motion.button
               whileHover={{ scale: 1.1 }}
@@ -128,10 +125,7 @@ export default function ListaComprasPremium() {
           </motion.div>
 
           <div className="flex gap-3">
-            <motion.div
-              whileFocus={{ boxShadow: "0 0 0 2px rgba(16, 185, 129, 0.5)" }}
-              className="flex-1"
-            >
+            <motion.div className="flex-1">
               <input
                 type="number"
                 value={valor}
@@ -139,7 +133,7 @@ export default function ListaComprasPremium() {
                 placeholder="Preço unitário"
                 min="0"
                 step="0.01"
-                className="w-full p-4 border rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                className="w-full p-4 border rounded-xl bg-white text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 dark:bg-gray-800 dark:text-white dark:placeholder:text-gray-400"
               />
             </motion.div>
 
@@ -147,7 +141,7 @@ export default function ListaComprasPremium() {
               <select
                 value={categoriaSelecionada}
                 onChange={(e) => setCategoriaSelecionada(e.target.value)}
-                className="w-full p-4 border rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 appearance-none"
+                className="w-full p-4 border rounded-xl bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 dark:bg-gray-800 dark:text-white"
               >
                 {categorias.map((cat) => (
                   <option key={cat} value={cat}>
