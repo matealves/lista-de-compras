@@ -7,7 +7,6 @@ import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlus,
-  faTrash,
   faCheck,
   faPen,
   faCirclePlus,
@@ -17,7 +16,6 @@ import {
   faCircle,
   faTimes,
   faGripVertical,
-  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function ListaComprasPremium() {

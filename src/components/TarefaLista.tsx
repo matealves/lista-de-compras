@@ -27,7 +27,6 @@ export default function TarefaLista() {
 
   return (
     <div className="pb-20 min-h-screen bg-gray-50">
-      {/* Formulário de Adição */}
       <div className="bg-white p-4 shadow-sm sticky top-0 z-10">
         <form onSubmit={handleSubmit} className="space-y-3">
           <div className="flex gap-2">
@@ -58,7 +57,6 @@ export default function TarefaLista() {
         </form>
       </div>
 
-      {/* Lista de Itens */}
       <div className="p-4 space-y-2">
         {tarefas.length === 0 ? (
           <div className="text-center py-10 text-gray-500">
@@ -99,7 +97,6 @@ export default function TarefaLista() {
         )}
       </div>
 
-      {/* Total */}
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t p-4 shadow-lg">
         <div className="flex justify-between items-center">
           <span className="font-medium">Total:</span>
