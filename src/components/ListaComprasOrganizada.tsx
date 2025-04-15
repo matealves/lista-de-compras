@@ -1,8 +1,8 @@
 "use client";
 
 import { useTarefas } from "../contexts/TarefaContext";
-import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence, Reorder } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion } from "framer-motion";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

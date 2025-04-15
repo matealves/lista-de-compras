@@ -7,7 +7,7 @@ const TarefaContext = createContext<TarefaContextType | undefined>(undefined);
 
 export const TarefaProvider = ({ children }: { children: React.ReactNode }) => {
   const [tarefas, setTarefas] = useState<Tarefa[]>([]);
-  const [categorias] = useState([
+  const [categorias] = useState<string[]>([
     'Hortifruti', 'Limpeza', 'Mercearia', 
     'Bebidas', 'Padaria', 'Carnes', 'Congelados'
   ]);
@@ -17,7 +17,7 @@ export const TarefaProvider = ({ children }: { children: React.ReactNode }) => {
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
-        setTarefas(parsed.map((t: any) => ({
+        setTarefas(parsed.map((t: Tarefa) => ({
           ...t,
           selecionada: false,
           dataCriacao: new Date(t.dataCriacao)
