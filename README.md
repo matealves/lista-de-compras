@@ -1,4 +1,4 @@
-# 🛒 **Lista de Compras** 🎉
+# 🛒 **Lista de Compras** 🛒
 
 Bem-vindo ao **Lista de Compras**, uma aplicação moderna e interativa para gerenciar suas compras de forma eficiente e divertida! 💡🚀 Desenvolvida com **React**, **Next.js**, **TypeScript**, **TailwindCSS**, **Framer Motion**, e **React DnD**, esta aplicação proporciona uma experiência de usuário fluída com recursos como arrastar e soltar (drag and drop) e muito mais!
 
@@ -21,7 +21,7 @@ Bem-vindo ao **Lista de Compras**, uma aplicação moderna e interativa para ger
 
 Para testar a aplicação **Lista de Compras** diretamente no navegador, clique no link abaixo:
 
-[**Teste na Vercel**]() 🚀
+[**Teste na Vercel**](https://lista-de-compras-2-0.vercel.app/) 🚀
 
 ## 🤝 Contribuindo
 
