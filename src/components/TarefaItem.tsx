@@ -31,42 +31,42 @@ export default function TarefaItem({ tarefa }: { tarefa: Tarefa }) {
   };
 
   return (
-    <div className={`p-4 border-b flex items-center justify-between ${tarefa.concluida ? 'bg-gray-50' : 'bg-white'}`}>
+    <div className={`p-4 border-b flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${tarefa.concluida ? 'bg-gray-50' : 'bg-white'}`}>
       <div className="flex items-center space-x-3 flex-1 min-w-0">
         <button
           onClick={() => toggleConcluida(tarefa.id)}
-          className={`w-6 h-6 rounded-full border flex items-center justify-center ${tarefa.concluida ? 'bg-emerald-500 border-emerald-500 text-white' : 'border-gray-300'}`}
+          className={`w-6 h-6 rounded-full border flex items-center justify-center transition-colors ${tarefa.concluida ? 'bg-emerald-500 border-emerald-500 text-white' : 'border-gray-300'}`}
         >
           {tarefa.concluida && <FontAwesomeIcon icon={faCheck} size="xs" />}
         </button>
-        
-        <span className={`flex-1 ${tarefa.concluida ? 'line-through text-gray-500' : 'text-gray-800'}`}>
+
+        <span className={`flex-1 truncate ${tarefa.concluida ? 'line-through text-gray-500' : 'text-gray-800'} text-sm sm:text-base`}>
           {tarefa.texto}
         </span>
       </div>
 
-      <div className="flex items-center space-x-4">
-        <div className="flex items-center space-x-2">
+      <div className="flex items-center gap-3 flex-wrap justify-end sm:justify-normal">
+        <div className="flex items-center gap-2">
           <button 
             onClick={() => decrementarQuantidade(tarefa.id)}
-            className="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full text-gray-500 hover:bg-gray-200"
+            className="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full text-gray-500 hover:bg-gray-200 transition"
             disabled={tarefa.quantidade <= 1}
           >
             <FontAwesomeIcon icon={faMinus} size="xs" />
           </button>
-          <span className="w-6 text-center">
+          <span className="w-6 text-center text-gray-800 text-sm font-medium">
             {tarefa.quantidade}
           </span>
           <button 
             onClick={() => incrementarQuantidade(tarefa.id)}
-            className="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full text-gray-500 hover:bg-gray-200"
+            className="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full text-gray-500 hover:bg-gray-200 transition"
           >
             <FontAwesomeIcon icon={faPlus} size="xs" />
           </button>
         </div>
 
         {editandoPreco ? (
-          <div className="flex items-center">
+          <div className="flex items-center gap-2">
             <input
               ref={precoInputRef}
               type="number"
@@ -74,18 +74,19 @@ export default function TarefaItem({ tarefa }: { tarefa: Tarefa }) {
               onChange={(e) => setNovoPreco(e.target.value)}
               onBlur={handleSalvarPreco}
               onKeyDown={(e) => e.key === 'Enter' && handleSalvarPreco()}
-              className="w-20 p-1 border rounded"
+              className="w-24 sm:w-28 p-2 rounded-md border border-emerald-300 text-gray-900 placeholder-gray-400 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all shadow-sm"
+              placeholder="Preço"
             />
             <button
               onClick={handleSalvarPreco}
-              className="ml-2 text-emerald-600"
+              className="text-emerald-600 text-sm font-semibold hover:underline"
             >
               OK
             </button>
           </div>
         ) : (
-          <div className="flex items-center">
-            <span className="font-medium text-emerald-600">
+          <div className="flex items-center gap-2">
+            <span className="font-semibold text-emerald-600 text-sm sm:text-base">
               R$ {(tarefa.quantidade * tarefa.valor).toFixed(2)}
             </span>
             <button
@@ -93,7 +94,7 @@ export default function TarefaItem({ tarefa }: { tarefa: Tarefa }) {
                 setEditandoPreco(true);
                 setNovoPreco(tarefa.valor.toString());
               }}
-              className="ml-2 text-gray-400 hover:text-emerald-600"
+              className="text-gray-400 hover:text-emerald-600 transition"
             >
               <FontAwesomeIcon icon={faPencil} size="xs" />
             </button>
@@ -102,7 +103,7 @@ export default function TarefaItem({ tarefa }: { tarefa: Tarefa }) {
 
         <button
           onClick={() => removerTarefa(tarefa.id)}
-          className="text-gray-300 hover:text-red-500"
+          className="text-gray-300 hover:text-red-500 transition"
         >
           <FontAwesomeIcon icon={faTrash} />
         </button>
