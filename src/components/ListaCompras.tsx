@@ -1,9 +1,11 @@
 "use client";
 
 import { useTarefas } from "../contexts/TarefaContext";
+import TotalDisplay from "./TotalDisplay";
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
+import LimiteGasto from "./LimiteGasto";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlus,
@@ -98,6 +100,8 @@ export default function ListaComprasPremium() {
           </motion.button>
         </div>
       </motion.div>
+
+      <LimiteGasto />
 
       <motion.div
         initial={{ opacity: 0, y: -10 }}
@@ -435,36 +439,7 @@ export default function ListaComprasPremium() {
           )}
         </Droppable>
       </DragDropContext>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3 }}
-        className="fixed bottom-0 left-0 right-0 bg-white border-t p-4 shadow-lg"
-      >
-        <div className="flex justify-between items-center max-w-4xl mx-auto">
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            onClick={removerTodas}
-            className="px-3 py-1 bg-red-500 text-white rounded-lg text-sm font-medium"
-          >
-            Limpar tudo
-          </motion.div>
-
-          <div className="text-right">
-            <div className="text-sm text-gray-500">Total</div>
-            <motion.div
-              animate={{
-                scale: [1, 1.05, 1],
-                transition: { duration: 0.5 },
-              }}
-              className="text-2xl font-bold text-emerald-600"
-            >
-              R$ {total.toFixed(2)}
-            </motion.div>
-          </div>
-        </div>
-      </motion.div>
+      <TotalDisplay />
     </div>
   );
 }

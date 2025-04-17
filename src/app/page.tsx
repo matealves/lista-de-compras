@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import ListaComprasOrganizada from '../components/ListaComprasOrganizada';
-import { TarefaProvider } from '../contexts/TarefaContext';
+import ListaCompras from "../components/ListaCompras";
+import { TarefaProvider } from "../contexts/TarefaContext";
 
 export default function Home() {
   return (
     <TarefaProvider>
-      <ListaComprasOrganizada />
+      <ListaCompras />
     </TarefaProvider>
   );
 }
