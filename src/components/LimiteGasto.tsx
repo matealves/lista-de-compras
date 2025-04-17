@@ -1,19 +1,25 @@
 'use client';
 
 import { useTarefas } from '../contexts/TarefaContext';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartColumn, faSave, faPencil } from '@fortawesome/free-solid-svg-icons';
 
 export default function LimiteGasto() {
   const { limite, atualizarLimite } = useTarefas();
-  const [inputValue, setInputValue] = useState(limite.toString());
+  const [inputValue, setInputValue] = useState('');
   const [editando, setEditando] = useState(false);
 
-  useEffect(() => {
-    setInputValue(limite.toString());
+  const valorLimiteFormatado = useMemo(() => {
+    return limite.toString();
   }, [limite]);
+
+  useEffect(() => {
+    if (!editando) {
+      setInputValue(valorLimiteFormatado);
+    }
+  }, [valorLimiteFormatado, editando]);
 
   const handleSalvar = () => {
     const valor = parseFloat(inputValue);
@@ -28,12 +34,12 @@ export default function LimiteGasto() {
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.3 }}
-      className="mx-auto mt-4 p-5 rounded-xl bg-white shadow-lg border border-gray-200 max-w-6xl"
+      className="mx-auto mt-4 p-4 sm:p-6 rounded-xl bg-white shadow-lg border border-gray-200 max-w-6xl"
     >
-      <div className="flex items-center justify-between mb-3">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4">
         <motion.h2 
           whileHover={{ scale: 1.02 }}
-          className="text-lg font-semibold text-gray-800 flex items-center gap-2"
+          className="text-base sm:text-lg font-semibold text-gray-900 sm:text-gray-800 flex items-center gap-2"
         >
           <FontAwesomeIcon icon={faChartColumn} className="text-emerald-600" />
           Limite de Gasto
@@ -74,10 +80,11 @@ export default function LimiteGasto() {
           >
             <input
               type="number"
+              inputMode="decimal"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               placeholder="Digite o limite de gasto"
-              className="w-full p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              className="w-full p-3 rounded-xl border border-gray-300 text-gray-900 sm:text-gray-700 focus:outline-none focus:ring-2 focus:ring-emerald-500"
               onKeyDown={(e) => e.key === 'Enter' && handleSalvar()}
               autoFocus
             />
@@ -90,8 +97,9 @@ export default function LimiteGasto() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <span className="font-medium text-gray-700">
-              Limite definido: <span className="font-bold text-emerald-600">R$ {limite.toFixed(2)}</span>
+            <span className="font-medium text-gray-900 sm:text-gray-700">
+              Limite definido:{' '}
+              <span className="font-bold text-emerald-600">R$ {limite.toFixed(2)}</span>
             </span>
           </motion.div>
         )}
