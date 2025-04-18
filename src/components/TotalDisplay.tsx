@@ -7,7 +7,8 @@ export default function TotalDisplay() {
   const { total, limite } = useTarefas();
 
   const progresso = limite ? Math.min((total / limite) * 100, 100) : 0;
-  const restante = Math.max(limite - total, 0);
+  const restante = limite - total;
+  const ultrapassou = restante < 0;
 
   return (
     <motion.div
@@ -22,16 +23,21 @@ export default function TotalDisplay() {
           <p className="text-lg sm:text-xl font-semibold text-emerald-600">
             R$ {total.toFixed(2)}
           </p>
+
           {limite > 0 && (
-            <p className="text-xs sm:text-sm text-gray-500 mt-1">
-              Restante do limite:{" "}
-              <span
-                className={`font-medium ${
-                  restante === 0 ? "text-red-500" : "text-gray-700"
-                }`}
-              >
-                R$ {restante.toFixed(2)}
-              </span>
+            <p className="text-xs sm:text-sm mt-1">
+              {ultrapassou ? (
+                <span className="text-red-600 font-medium">
+                  Saldo negativo: -R$ {Math.abs(restante).toFixed(2)}
+                </span>
+              ) : (
+                <span className="text-gray-500">
+                  Restante do limite:{" "}
+                  <span className="font-medium text-gray-700">
+                    R$ {restante.toFixed(2)}
+                  </span>
+                </span>
+              )}
             </p>
           )}
         </div>
@@ -44,7 +50,9 @@ export default function TotalDisplay() {
             </div>
             <div className="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
               <motion.div
-                className="h-full bg-emerald-500"
+                className={`h-full ${
+                  ultrapassou ? "bg-red-500" : "bg-emerald-500"
+                }`}
                 style={{ width: `${progresso}%` }}
                 initial={{ width: 0 }}
                 animate={{ width: `${progresso}%` }}

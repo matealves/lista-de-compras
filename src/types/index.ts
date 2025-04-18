@@ -30,7 +30,7 @@ export interface TarefaContextType {
   orcamento: number;
   valorRestante: number;
   definirOrcamento: (valor: number) => void;
-  limite: number; // <- esse já resolve
+  limite: number;
   atualizarLimite: (valor: number) => void;
   progresso: number;
   progressoGastos: number;
