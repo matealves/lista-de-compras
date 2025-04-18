@@ -9,24 +9,16 @@ import {
   faSave,
   faPencil,
 } from "@fortawesome/free-solid-svg-icons";
+import { formatarMoeda } from "../utils/formatarMoeda";
 
 export default function LimiteGasto() {
   const { limite, atualizarLimite } = useTarefas();
   const [inputValue, setInputValue] = useState("");
   const [editando, setEditando] = useState(false);
 
-  const formatarParaBRL = (valor: string | number) => {
-    const numero = typeof valor === "string" ? parseFloat(valor) : valor;
-    if (isNaN(numero)) return "";
-    return numero.toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    });
-  };
-
   useEffect(() => {
     if (!editando) {
-      setInputValue(formatarParaBRL(limite));
+      setInputValue(formatarMoeda(limite));
     }
   }, [limite, editando]);
 
@@ -34,7 +26,7 @@ export default function LimiteGasto() {
     const raw = e.target.value;
     const somenteNumeros = raw.replace(/\D/g, "");
     const valor = parseFloat(somenteNumeros) / 100;
-    setInputValue(formatarParaBRL(valor));
+    setInputValue(formatarMoeda(valor));
   };
 
   const handleSalvar = () => {
@@ -123,7 +115,7 @@ export default function LimiteGasto() {
             <span className="font-medium text-gray-900 sm:text-gray-700">
               Limite definido:{" "}
               <span className="font-bold text-emerald-600">
-                {formatarParaBRL(limite)}
+                {formatarMoeda(limite)}
               </span>
             </span>
           </motion.div>

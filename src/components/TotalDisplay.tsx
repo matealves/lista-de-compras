@@ -2,6 +2,7 @@
 
 import { useTarefas } from "../contexts/TarefaContext";
 import { motion } from "framer-motion";
+import { formatarMoeda } from "../utils/formatarMoeda";
 
 export default function TotalDisplay() {
   const { total, limite } = useTarefas();
@@ -21,20 +22,20 @@ export default function TotalDisplay() {
         <div className="flex-1">
           <p className="text-xs sm:text-sm text-gray-500">Total da compra</p>
           <p className="text-lg sm:text-xl font-semibold text-emerald-600">
-            R$ {total.toFixed(2)}
+            {formatarMoeda(total)}
           </p>
 
           {limite > 0 && (
             <p className="text-xs sm:text-sm mt-1">
               {ultrapassou ? (
                 <span className="text-red-600 font-medium">
-                  Saldo negativo: -R$ {Math.abs(restante).toFixed(2)}
+                  Saldo negativo: {formatarMoeda(Math.abs(restante))}
                 </span>
               ) : (
                 <span className="text-gray-500">
                   Restante do limite:{" "}
                   <span className="font-medium text-gray-700">
-                    R$ {restante.toFixed(2)}
+                    {formatarMoeda(restante)}
                   </span>
                 </span>
               )}
@@ -45,7 +46,7 @@ export default function TotalDisplay() {
         {limite > 0 && (
           <div className="w-full sm:w-1/2">
             <div className="flex justify-between text-xs sm:text-sm mb-1 text-gray-500">
-              <span>Limite: R$ {limite.toFixed(2)}</span>
+              <span>Limite: {formatarMoeda(limite)}</span>
               <span>{progresso.toFixed(0)}%</span>
             </div>
             <div className="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
