@@ -474,10 +474,10 @@ export default function ListaComprasPremium() {
                               ) : (
                                 <div className="flex items-center">
                                   <span className="font-bold text-emerald-600">
-                                    R${" "}
-                                    {(tarefa.quantidade * tarefa.valor).toFixed(
-                                      2
-                                    )}
+                                    {new Intl.NumberFormat("pt-BR", {
+                                      style: "currency",
+                                      currency: "BRL",
+                                    }).format(tarefa.quantidade * tarefa.valor)}
                                   </span>
                                   <motion.button
                                     whileHover={{ scale: 1.2 }}
