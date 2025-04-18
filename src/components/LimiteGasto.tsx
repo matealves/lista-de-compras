@@ -1,28 +1,49 @@
-'use client';
+"use client";
 
-import { useTarefas } from '../contexts/TarefaContext';
-import { useState, useEffect, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChartColumn, faSave, faPencil } from '@fortawesome/free-solid-svg-icons';
+import { useTarefas } from "../contexts/TarefaContext";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChartColumn,
+  faSave,
+  faPencil,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function LimiteGasto() {
   const { limite, atualizarLimite } = useTarefas();
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const [editando, setEditando] = useState(false);
 
-  const valorLimiteFormatado = useMemo(() => {
-    return limite.toString();
-  }, [limite]);
+  const formatarParaBRL = (valor: string | number) => {
+    const numero = typeof valor === "string" ? parseFloat(valor) : valor;
+    if (isNaN(numero)) return "";
+    return numero.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+  };
 
   useEffect(() => {
     if (!editando) {
-      setInputValue(valorLimiteFormatado);
+      setInputValue(formatarParaBRL(limite));
     }
-  }, [valorLimiteFormatado, editando]);
+  }, [limite, editando]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value;
+    const somenteNumeros = raw.replace(/\D/g, "");
+    const valor = parseFloat(somenteNumeros) / 100;
+    setInputValue(formatarParaBRL(valor));
+  };
 
   const handleSalvar = () => {
-    const valor = parseFloat(inputValue);
+    const valor = parseFloat(
+      inputValue
+        .replace(/\./g, "")
+        .replace(",", ".")
+        .replace(/[^\d.-]/g, "")
+    );
     if (!isNaN(valor)) {
       atualizarLimite(valor);
       setEditando(false);
@@ -79,13 +100,15 @@ export default function LimiteGasto() {
             className="mt-3"
           >
             <input
-              type="number"
-              inputMode="decimal"
+              type="text"
+              inputMode="numeric"
               value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
+              onChange={handleInputChange}
               placeholder="Digite o limite de gasto"
               className="w-full p-3 rounded-xl border border-gray-300 text-gray-900 sm:text-gray-700 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-              onKeyDown={(e) => e.key === 'Enter' && handleSalvar()}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") handleSalvar();
+              }}
               autoFocus
             />
           </motion.div>
@@ -98,8 +121,10 @@ export default function LimiteGasto() {
             transition={{ duration: 0.2 }}
           >
             <span className="font-medium text-gray-900 sm:text-gray-700">
-              Limite definido:{' '}
-              <span className="font-bold text-emerald-600">R$ {limite.toFixed(2)}</span>
+              Limite definido:{" "}
+              <span className="font-bold text-emerald-600">
+                {formatarParaBRL(limite)}
+              </span>
             </span>
           </motion.div>
         )}
