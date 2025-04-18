@@ -6,7 +6,7 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import LimiteGasto from "./LimiteGasto";
-import { formatarMoeda } from '../utils/formatarMoeda';
+import { formatarMoeda } from "../utils/formatarMoeda";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlus,
@@ -106,7 +106,7 @@ export default function ListaComprasPremium() {
   };
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-gradient-to-br from-gray-50 to-gray-100 pb-28">
+    <div className="min-h-screen mb-4 overflow-x-hidden bg-gradient-to-br from-gray-50 to-gray-100 pb-28">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -145,139 +145,140 @@ export default function ListaComprasPremium() {
       <LimiteGasto />
 
       <motion.div
-  initial={{ opacity: 0, y: -10 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 0.2 }}
-  className="sticky top-20 z-10 bg-white p-6 mx-auto mt-4 rounded-2xl shadow-lg border border-gray-200 max-w-6xl"
->
-  <div className="flex flex-col gap-3 mb-5">
-    <div className="flex justify-between items-center gap-3">
-      <div className="flex-1 min-w-0">
-        {filtroCategoria && (
-          <motion.div
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="inline-flex items-center bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded-full text-sm shadow-inner border border-emerald-100"
-          >
-            <span className="truncate max-w-[180px]">
-              Filtro: <span className="font-semibold">{filtroCategoria}</span>
-            </span>
-            <button
-              onClick={() => setFiltroCategoria(null)}
-              className="ml-2 text-emerald-500 hover:text-emerald-700 transition-colors"
-              aria-label="Remover filtro"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+        className="sticky top-20 z-10 bg-white p-6 mx-auto mt-4 rounded-2xl shadow-lg border border-gray-200 max-w-6xl"
+      >
+        <div className="flex flex-col gap-3 mb-5">
+          <div className="flex justify-between items-center gap-3">
+            <div className="flex-1 min-w-0">
+              {filtroCategoria && (
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="inline-flex items-center bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded-full text-sm shadow-inner border border-emerald-100"
+                >
+                  <span className="truncate max-w-[180px]">
+                    Filtro:{" "}
+                    <span className="font-semibold">{filtroCategoria}</span>
+                  </span>
+                  <button
+                    onClick={() => setFiltroCategoria(null)}
+                    className="ml-2 text-emerald-500 hover:text-emerald-700 transition-colors"
+                    aria-label="Remover filtro"
+                  >
+                    <FontAwesomeIcon icon={faXmark} className="text-xs" />
+                  </button>
+                </motion.div>
+              )}
+            </div>
+
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={() => setShowFilterModal(true)}
+              className={`flex-shrink-0 px-3 py-2 rounded-lg flex items-center gap-2 text-sm font-medium transition-all ${
+                filtroCategoria
+                  ? "bg-emerald-100 text-emerald-600 hover:bg-emerald-200"
+                  : "bg-gray-50 text-gray-600 hover:bg-gray-100"
+              }`}
             >
-              <FontAwesomeIcon icon={faXmark} className="text-xs" />
-            </button>
-          </motion.div>
-        )}
-      </div>
+              <FontAwesomeIcon icon={faFilter} className="text-sm" />
+              <span className="hidden sm:inline">Filtrar</span>
+            </motion.button>
+          </div>
 
-      <motion.button
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.97 }}
-        onClick={() => setShowFilterModal(true)}
-        className={`flex-shrink-0 px-3 py-2 rounded-lg flex items-center gap-2 text-sm font-medium transition-all ${
-          filtroCategoria
-            ? "bg-emerald-100 text-emerald-600 hover:bg-emerald-200"
-            : "bg-gray-50 text-gray-600 hover:bg-gray-100"
-        }`}
-      >
-        <FontAwesomeIcon icon={faFilter} className="text-sm" />
-        <span className="hidden sm:inline">Filtrar</span>
-      </motion.button>
-    </div>
-
-    <div className="text-center">
-      <p className="text-sm text-gray-600 font-medium px-4 py-2 bg-gray-50 rounded-lg">
-        {filtroCategoria 
-          ? `Adicionando itens à categoria ${filtroCategoria}`
-          : "Preencha os campos abaixo para adicionar itens à lista"}
-      </p>
-    </div>
-  </div>
-
-  <div className="relative mb-5">
-    <div className="absolute inset-0 flex items-center">
-      <div className="w-full border-t border-gray-200"></div>
-    </div>
-    <div className="relative flex justify-center">
-      <span className="px-2 bg-white text-xs text-gray-500">
-        DETALHES DO ITEM
-      </span>
-    </div>
-  </div>
-
-  <form onSubmit={handleSubmit} className="space-y-4">
-    <div className="flex items-center gap-3">
-      <div className="flex-1 relative">
-        <input
-          type="text"
-          value={novoItem}
-          onChange={(e) => setNovoItem(e.target.value)}
-          placeholder="Nome do item"
-          className="w-full p-3 pl-4 pr-12 border rounded-xl bg-white text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-          aria-label="Nome do item"
-        />
-        {novoItem && (
-          <button
-            type="button"
-            onClick={() => setNovoItem('')}
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
-          >
-            <FontAwesomeIcon icon={faTimes} size="xs" />
-          </button>
-        )}
-      </div>
-
-      <motion.button
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.97 }}
-        type="submit"
-        disabled={!novoItem.trim()}
-        className="bg-emerald-500 text-white p-3 rounded-xl hover:bg-emerald-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
-        aria-label="Adicionar item"
-      >
-        <FontAwesomeIcon icon={faPlus} className="text-lg" />
-      </motion.button>
-    </div>
-
-    <div className="grid grid-cols-2 gap-3">
-      <div className="relative">
-        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-          R$
+          <div className="text-center">
+            <p className="text-sm text-gray-600 font-medium px-4 py-2 bg-gray-50 rounded-lg">
+              {filtroCategoria
+                ? `Adicionando itens à categoria ${filtroCategoria}`
+                : "Preencha os campos abaixo para adicionar itens à lista"}
+            </p>
+          </div>
         </div>
-        <input
-          type="number"
-          value={valor}
-          onChange={(e) => setValor(e.target.value)}
-          placeholder="0,00"
-          min="0"
-          step="0.01"
-          className="w-full pl-8 p-3 border rounded-xl bg-white text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-          aria-label="Preço do item"
-        />
-      </div>
 
-      <div className="relative">
-        <select
-          value={categoriaSelecionada}
-          onChange={(e) => setCategoriaSelecionada(e.target.value)}
-          className="w-full p-3 border rounded-xl bg-white text-gray-900 appearance-none focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent pr-8"
-          aria-label="Categoria do item"
-        >
-          {categorias.map((cat) => (
-            <option key={cat} value={cat}>
-              {cat}
-            </option>
-          ))}
-        </select>
-        <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-400">
-          <FontAwesomeIcon icon={faChevronDown} size="xs" />
+        <div className="relative mb-5">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-gray-200"></div>
+          </div>
+          <div className="relative flex justify-center">
+            <span className="px-2 bg-white text-xs text-gray-500">
+              DETALHES DO ITEM
+            </span>
+          </div>
         </div>
-      </div>
-    </div>
-  </form>
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="flex items-center gap-3">
+            <div className="flex-1 relative">
+              <input
+                type="text"
+                value={novoItem}
+                onChange={(e) => setNovoItem(e.target.value)}
+                placeholder="Nome do item"
+                className="w-full p-3 pl-4 pr-12 border rounded-xl bg-white text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                aria-label="Nome do item"
+              />
+              {novoItem && (
+                <button
+                  type="button"
+                  onClick={() => setNovoItem("")}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                >
+                  <FontAwesomeIcon icon={faTimes} size="xs" />
+                </button>
+              )}
+            </div>
+
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              type="submit"
+              disabled={!novoItem.trim()}
+              className="bg-emerald-500 text-white p-3 rounded-xl hover:bg-emerald-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+              aria-label="Adicionar item"
+            >
+              <FontAwesomeIcon icon={faPlus} className="text-lg" />
+            </motion.button>
+          </div>
+
+          <div className="grid grid-cols-2 gap-3">
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                R$
+              </div>
+              <input
+                type="number"
+                value={valor}
+                onChange={(e) => setValor(e.target.value)}
+                placeholder="0,00"
+                min="0"
+                step="0.01"
+                className="w-full pl-8 p-3 border rounded-xl bg-white text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                aria-label="Preço do item"
+              />
+            </div>
+
+            <div className="relative">
+              <select
+                value={categoriaSelecionada}
+                onChange={(e) => setCategoriaSelecionada(e.target.value)}
+                className="w-full p-3 border rounded-xl bg-white text-gray-900 appearance-none focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent pr-8"
+                aria-label="Categoria do item"
+              >
+                {categorias.map((cat) => (
+                  <option key={cat} value={cat}>
+                    {cat}
+                  </option>
+                ))}
+              </select>
+              <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-400">
+                <FontAwesomeIcon icon={faChevronDown} size="xs" />
+              </div>
+            </div>
+          </div>
+        </form>
       </motion.div>
 
       <AnimatePresence>
@@ -293,34 +294,40 @@ export default function ListaComprasPremium() {
               initial={{ y: 20 }}
               animate={{ y: 0 }}
               exit={{ y: -20 }}
-              className="bg-white rounded-xl p-6 w-full max-w-md"
+              className="bg-white dark:bg-zinc-900 rounded-2xl p-6 w-full max-w-md shadow-lg"
               onClick={(e) => e.stopPropagation()}
             >
-              <h3 className="text-lg font-semibold mb-4">
+              <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-white">
                 Filtrar por Categoria
               </h3>
-              <div className="grid grid-cols-2 gap-2">
+
+              <div className="grid grid-cols-2 gap-3">
                 {categorias.map((categoria) => (
                   <button
                     key={categoria}
                     onClick={() => toggleFilter(categoria)}
-                    className={`p-3 rounded-lg border flex items-center justify-between ${
-                      filtroCategoria === categoria
-                        ? "border-emerald-500 bg-emerald-50 text-emerald-600"
-                        : "border-gray-200 hover:bg-gray-50"
-                    }`}
+                    className={`p-3 rounded-xl border transition-colors duration-200 flex items-center justify-between text-sm sm:text-base
+          ${
+            filtroCategoria === categoria
+              ? "border-emerald-500 bg-emerald-100 text-emerald-700 dark:bg-emerald-900 dark:text-emerald-300"
+              : "border-gray-300 bg-white text-gray-800 hover:bg-gray-100 dark:bg-zinc-800 dark:text-white dark:border-zinc-700 dark:hover:bg-zinc-700"
+          }`}
                   >
-                    <span>{categoria}</span>
+                    <span className="truncate">{categoria}</span>
                     {filtroCategoria === categoria && (
-                      <FontAwesomeIcon icon={faCheck} />
+                      <FontAwesomeIcon
+                        icon={faCheck}
+                        className="ml-2 text-emerald-500"
+                      />
                     )}
                   </button>
                 ))}
               </div>
-              <div className="flex justify-end mt-4">
+
+              <div className="flex justify-end mt-6">
                 <button
                   onClick={() => setShowFilterModal(false)}
-                  className="px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600"
+                  className="px-4 py-2 text-sm sm:text-base bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors duration-200"
                 >
                   Fechar
                 </button>
