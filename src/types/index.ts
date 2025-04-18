@@ -35,4 +35,6 @@ export interface TarefaContextType {
   progresso: number;
   progressoGastos: number;
   limiteGasto: number;
+  filtroCategoria: string | null;
+  setFiltroCategoria: (categoria: string | null) => void;
 }

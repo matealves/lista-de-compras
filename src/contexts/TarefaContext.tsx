@@ -20,6 +20,8 @@ export const TarefaProvider = ({ children }: { children: React.ReactNode }) => {
   const [orcamento, setOrcamento] = useState<number>(0);
   const [limite, setLimite] = useState<number>(0);
   const [valorRestante, setValorRestante] = useState<number>(0);
+  const [filtroCategoria, setFiltroCategoria] = useState<string | null>(null);
+
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -187,7 +189,9 @@ export const TarefaProvider = ({ children }: { children: React.ReactNode }) => {
         atualizarLimite,
         progresso,
         progressoGastos,
-        limiteGasto: +limiteGasto
+        limiteGasto: +limiteGasto,
+        filtroCategoria: filtroCategoria ?? "",
+        setFiltroCategoria,
       }}
     >
       {children}
