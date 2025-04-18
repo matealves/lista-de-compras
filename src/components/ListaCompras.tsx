@@ -294,10 +294,10 @@ export default function ListaComprasPremium() {
               initial={{ y: 20 }}
               animate={{ y: 0 }}
               exit={{ y: -20 }}
-              className="bg-white dark:bg-zinc-900 rounded-2xl p-6 w-full max-w-md shadow-lg"
+              className="bg-white rounded-2xl p-6 w-full max-w-md shadow-lg"
               onClick={(e) => e.stopPropagation()}
             >
-              <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-white">
+              <h3 className="text-xl font-bold mb-4 text-gray-900">
                 Filtrar por Categoria
               </h3>
 
@@ -306,12 +306,12 @@ export default function ListaComprasPremium() {
                   <button
                     key={categoria}
                     onClick={() => toggleFilter(categoria)}
-                    className={`p-3 rounded-xl border transition-colors duration-200 flex items-center justify-between text-sm sm:text-base
-          ${
-            filtroCategoria === categoria
-              ? "border-emerald-500 bg-emerald-100 text-emerald-700 dark:bg-emerald-900 dark:text-emerald-300"
-              : "border-gray-300 bg-white text-gray-800 hover:bg-gray-100 dark:bg-zinc-800 dark:text-white dark:border-zinc-700 dark:hover:bg-zinc-700"
-          }`}
+                    className={`p-3 rounded-xl border transition-colors duration-200 flex items-center justify-between text-sm sm:text-base font-medium
+                ${
+                  filtroCategoria === categoria
+                    ? "border-emerald-500 bg-emerald-100 text-emerald-800"
+                    : "border-gray-300 bg-gray-50 text-gray-800 hover:bg-gray-100"
+                }`}
                   >
                     <span className="truncate">{categoria}</span>
                     {filtroCategoria === categoria && (
