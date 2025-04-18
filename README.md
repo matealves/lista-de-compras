@@ -1,36 +1,72 @@
-# 🛒 **Lista de Compras** 🛒
+# 🛒 Lista de Compras
 
-Bem-vindo ao **Lista de Compras**, uma aplicação moderna e interativa para gerenciar suas compras de forma eficiente e divertida! 💡🚀 Desenvolvida com **React**, **Next.js**, **TypeScript**, **TailwindCSS**, **Framer Motion**, e **React DnD**, esta aplicação proporciona uma experiência de usuário fluída com recursos como arrastar e soltar (drag and drop) e muito mais!
+**Lista de Compras** é uma aplicação web moderna e interativa que transforma a maneira como você organiza suas compras.  
+Com uma interface fluida, design responsivo e funcionalidades inteligentes, ela permite que você mantenha o controle total da sua lista — do início ao fim!  
 
-## 🚀 Tecnologias Utilizadas
-
-- **React**: A biblioteca JavaScript para criar interfaces de usuário interativas. ⚛️
-- **Next.js**: Framework para renderização do lado servidor e construção de aplicativos web rápidos e escaláveis. 🌐
-- **TypeScript**: Superset do JavaScript que oferece tipagem estática para evitar erros e melhorar a manutenção do código. 💻
-- **TailwindCSS**: Framework CSS que facilita a estilização de forma rápida e eficiente. 🎨
-- **Framer Motion**: Biblioteca para animações e transições no React, proporcionando uma interface interativa e atraente. ✨
-- **React DnD (@hello-pangea/dnd)**: Implementação de drag and drop (arrastar e soltar) para organizar os itens na lista de compras de forma intuitiva. 🔄
-
-## 📋 Funcionalidades
-
-- **📦 Organize seus Itens**: Arraste e solte os itens para organizar a lista conforme suas necessidades. 📦
-- **✅ Marcação de Itens Comprados**: Marque os itens como comprados e veja a sua lista ser atualizada automaticamente! 🛍️
-- **💾 Persistência no `localStorage`**: A aplicação salva seus itens e progresso diretamente no `localStorage`, permitindo que você retome sua lista de compras sempre que voltar ao aplicativo, mesmo após fechar o navegador. 🖥️🔄
-
-## 🌍 Teste a Aplicação
-
-Para testar a aplicação **Lista de Compras** diretamente no navegador, clique no link abaixo:
-
-[**Teste na Vercel**](https://lista-de-compras-2-0.vercel.app/) 🚀
-
-## 🤝 Contribuindo
-
-Contribuições são sempre bem-vindas! Se você quiser melhorar o projeto, basta abrir uma **issue** ou enviar um **pull request**. Antes de contribuir, por favor, leia o guia de contribuição e certifique-se de que o código está bem testado e segue os padrões do projeto.
-
-## 📄 Licença
-
-Este projeto é licenciado sob a [MIT License](LICENSE).
+💡 Feita para ser rápida, bonita e intuitiva. Ideal para o dia a dia, com recursos pensados para te fazer ganhar tempo e economizar dinheiro.
 
 ---
 
-Obrigado por utilizar o **Lista de Compras**! Se você gostou, por favor, dê uma estrela no repositório e compartilhe com seus amigos! ✨
+## 🚀 Tecnologias Utilizadas
+
+Tecnologias de ponta para uma experiência poderosa e suave:
+
+| Tecnologia        | Descrição |
+|-------------------|-----------|
+| ⚛️ **React**       | Biblioteca para interfaces dinâmicas e reativas |
+| 🌐 **Next.js**     | Framework completo para aplicações web otimizadas |
+| 💻 **TypeScript**  | Tipagem estática e segurança em tempo de desenvolvimento |
+| 🎨 **TailwindCSS** | Estilização rápida, moderna e responsiva com classes utilitárias |
+| ✨ **Framer Motion** | Animações suaves para uma UX encantadora |
+| 🔄 **@hello-pangea/dnd** | Sistema de drag and drop para reorganizar itens intuitivamente |
+
+---
+
+## 🧩 Funcionalidades
+
+### 📦 Organização via Drag and Drop
+Arraste e solte os itens da lista na ordem que preferir — mais controle, menos esforço.
+
+### ✅ Marcação Inteligente
+Clique para marcar um item como comprado. Ele será suavemente esmaecido e contabilizado no progresso da sua lista.
+
+### 🏷️ Filtro por Categoria
+Visualize rapidamente apenas o que você precisa: Alimentos, Limpeza, Higiene e outras categorias personalizadas.
+
+### 💸 Controle de Gastos + Limite
+Adicione preços aos itens e veja seu total de gastos em tempo real.  
+Defina um limite e acompanhe o progresso com uma **barra animada** que indica o quanto já foi usado.
+
+### 📑 Seleção em Massa
+Ative o modo de seleção e marque/desmarque vários itens de uma vez. Agilidade total!
+
+### 💾 Salvamento automático com `localStorage`
+Sua lista é salva automaticamente no navegador, garantindo que você não perca nada mesmo ao fechar a aba.
+
+---
+
+## 🌐 Acesse Agora
+
+🔗 [**Abrir Lista de Compras na Vercel**](https://lista-de-compras-2-0.vercel.app/)  
+Sem instalação, direto do navegador!
+
+---
+
+## 🛠️ Instalação Local
+
+Quer testar localmente? Siga os passos abaixo:
+
+```bash
+# 1. Clone o repositório
+git clone https://github.com/seu-usuario/lista-de-compras.git
+
+# 2. Acesse o diretório do projeto
+cd lista-de-compras
+
+# 3. Instale as dependências
+npm install
+
+# 4. Inicie o servidor de desenvolvimento
+npm run dev
+
+# 5. Abra no navegador: http://localhost:3000
