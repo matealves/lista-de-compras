@@ -47,7 +47,7 @@ Sua lista é salva automaticamente no navegador, garantindo que você não perca
 
 ## 🌐 Acesse Agora
 
-🔗 [**Abrir Lista de Compras na Vercel**](https://lista-de-compras-2-0.vercel.app/)  
+🔗 [**Abrir Lista de Compras na Vercel**](#)  
 Sem instalação, direto do navegador!
 
 ---
