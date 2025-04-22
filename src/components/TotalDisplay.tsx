@@ -29,11 +29,11 @@ export default function TotalDisplay() {
             <p className="text-xs sm:text-sm mt-1">
               {ultrapassou ? (
                 <span className="text-red-600 font-medium">
-                  Saldo negativo: {formatarMoeda(Math.abs(restante))}
+                  Valor excedido: {formatarMoeda(Math.abs(restante))}
                 </span>
               ) : (
                 <span className="text-gray-500">
-                  Restante do limite:{" "}
+                  Limite restante:{" "}
                   <span className="font-medium text-gray-700">
                     {formatarMoeda(restante)}
                   </span>
