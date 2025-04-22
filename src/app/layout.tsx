@@ -1,24 +1,28 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Lista de Compras Inteligente',
-  description: 'Aplicativo moderno para gerenciar suas compras',
-}
+  title: "Lista de Compras",
+  description: "Gerenciar suas compras com facilidade.",
+  icons: {
+    icon: "/file.svg",
+  },
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="pt-BR">
-      <body className={`${inter.className} bg-gray-50`}>
-        {children}
-      </body>
+      <head>
+        <link rel="icon" href="/file.svg" type="image/svg" />
+      </head>
+      <body className={`${inter.className} bg-gray-50`}>{children}</body>
     </html>
-  )
+  );
 }
