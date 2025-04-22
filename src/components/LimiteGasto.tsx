@@ -49,10 +49,10 @@ export default function LimiteGasto() {
       transition={{ delay: 0.3 }}
       className="mx-auto mt-4 p-4 sm:p-6 rounded-xl bg-white shadow-lg border border-gray-200 max-w-6xl"
     >
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4">
-        <motion.h2 
+      <div className="flex items-start sm:items-center justify-between gap-3 mb-4">
+        <motion.h2
           whileHover={{ scale: 1.02 }}
-          className="text-base sm:text-lg font-semibold text-gray-900 sm:text-gray-800 flex items-center gap-2"
+          className="text-base sm:text-lg font-semibold text-gray-700 sm:text-gray-800 flex items-center gap-2"
         >
           <FontAwesomeIcon icon={faChartColumn} className="text-emerald-600" />
           Limite de Gasto
@@ -73,7 +73,7 @@ export default function LimiteGasto() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setEditando(true)}
-            className="text-emerald-500 hover:text-emerald-700 font-medium transition-colors flex items-center gap-2"
+            className="text-emerald-500 hover:text-emerald-700 font-medium transition-colors flex items-center gap-2 cursor-pointer"
           >
             <FontAwesomeIcon icon={faPencil} />
             Editar
@@ -97,7 +97,7 @@ export default function LimiteGasto() {
               value={inputValue}
               onChange={handleInputChange}
               placeholder="Digite o limite de gasto"
-              className="w-full p-3 rounded-xl border border-gray-300 text-gray-900 sm:text-gray-700 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              className="w-full p-3 rounded-xl border border-gray-300 text-gray-700 sm:text-gray-700 focus:outline-none focus:ring-2 focus:ring-emerald-500"
               onKeyDown={(e) => {
                 if (e.key === "Enter") handleSalvar();
               }}
@@ -112,7 +112,7 @@ export default function LimiteGasto() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <span className="font-medium text-gray-900 sm:text-gray-700">
+            <span className="font-medium text-gray-700 sm:text-gray-700">
               Limite definido:{" "}
               <span className="font-bold text-emerald-600">
                 {formatarMoeda(limite)}
