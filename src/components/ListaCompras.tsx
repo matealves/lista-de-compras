@@ -173,20 +173,6 @@ export default function ListaComprasPremium() {
                 </motion.div>
               )}
             </div>
-
-            <motion.button
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              onClick={() => setShowFilterModal(true)}
-              className={`flex-shrink-0 px-3 py-2 rounded-lg flex items-center gap-2 text-sm font-medium transition-all ${
-                filtroCategoria
-                  ? "bg-emerald-100 text-emerald-600 hover:bg-emerald-200"
-                  : "bg-gray-50 text-gray-600 hover:bg-gray-100"
-              }`}
-            >
-              <FontAwesomeIcon icon={faFilter} className="text-sm" />
-              <span className="hidden sm:inline">Filtrar</span>
-            </motion.button>
           </div>
 
           <div className="text-center">
@@ -210,25 +196,43 @@ export default function ListaComprasPremium() {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="flex items-center gap-3">
-            <div className="flex-1 relative">
-              <input
-                type="text"
-                value={novoItem}
-                onChange={(e) => setNovoItem(e.target.value)}
-                placeholder="Nome do item"
-                className="w-full p-3 pl-4 pr-12 border rounded-xl bg-white text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-                aria-label="Nome do item"
-              />
-              {novoItem && (
-                <button
-                  type="button"
-                  onClick={() => setNovoItem("")}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
-                >
-                  <FontAwesomeIcon icon={faTimes} size="xs" />
-                </button>
-              )}
+          <div className="grid md:grid-cols-[70%_30%] gap-3">
+            <div className="flex flex-col gap-3 w-full">
+              <div className="relative">
+                <input
+                  type="text"
+                  value={novoItem}
+                  onChange={(e) => setNovoItem(e.target.value)}
+                  placeholder="Nome do item"
+                  className="w-full p-3 pl-4 pr-12 border rounded-xl bg-white text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                  aria-label="Nome do item"
+                />
+                {novoItem && (
+                  <button
+                    type="button"
+                    onClick={() => setNovoItem("")}
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  >
+                    <FontAwesomeIcon icon={faTimes} size="xs" />
+                  </button>
+                )}
+              </div>
+
+              <div className="relative">
+                <div className="absolute inset-y-0 mr-5 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                  R$
+                </div>
+                <input
+                  type="number"
+                  value={valor}
+                  onChange={(e) => setValor(e.target.value)}
+                  placeholder="0,00"
+                  min="0"
+                  step="0.01"
+                  className="w-full pl-9 p-3 border rounded-xl bg-white text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                  aria-label="Preço do item"
+                />
+              </div>
             </div>
 
             <motion.button
@@ -236,47 +240,11 @@ export default function ListaComprasPremium() {
               whileTap={{ scale: 0.97 }}
               type="submit"
               disabled={!novoItem.trim()}
-              className="bg-emerald-500 text-white p-3 rounded-xl hover:bg-emerald-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+              className="bg-emerald-500 text-white cursor-pointer h-full p-3 rounded-xl hover:bg-emerald-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
               aria-label="Adicionar item"
             >
               <FontAwesomeIcon icon={faPlus} className="text-lg" />
             </motion.button>
-          </div>
-
-          <div className="grid grid-cols-2 gap-3">
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-                R$
-              </div>
-              <input
-                type="number"
-                value={valor}
-                onChange={(e) => setValor(e.target.value)}
-                placeholder="0,00"
-                min="0"
-                step="0.01"
-                className="w-full pl-8 p-3 border rounded-xl bg-white text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-                aria-label="Preço do item"
-              />
-            </div>
-
-            <div className="relative">
-              <select
-                value={categoriaSelecionada}
-                onChange={(e) => setCategoriaSelecionada(e.target.value)}
-                className="w-full p-3 border rounded-xl bg-white text-gray-900 appearance-none focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent pr-8"
-                aria-label="Categoria do item"
-              >
-                {categorias.map((cat) => (
-                  <option key={cat} value={cat}>
-                    {cat}
-                  </option>
-                ))}
-              </select>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-400">
-                <FontAwesomeIcon icon={faChevronDown} size="xs" />
-              </div>
-            </div>
           </div>
         </form>
       </motion.div>
@@ -297,7 +265,7 @@ export default function ListaComprasPremium() {
               className="bg-white rounded-2xl p-6 w-full max-w-md shadow-lg"
               onClick={(e) => e.stopPropagation()}
             >
-              <h3 className="text-xl font-bold mb-4 text-gray-900">
+              <h3 className="text-xl font-bold mb-4 text-gray-700">
                 Filtrar por Categoria
               </h3>
 
@@ -520,16 +488,11 @@ export default function ListaComprasPremium() {
                                     className={`font-medium ${
                                       tarefa.concluida
                                         ? "line-through text-gray-500"
-                                        : "text-gray-800"
+                                        : "text-gray-700"
                                     }`}
                                   >
                                     {tarefa.texto}
                                   </p>
-                                  <div className="mt-1 flex items-center">
-                                    <span className="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs">
-                                      {tarefa.categoria}
-                                    </span>
-                                  </div>
                                 </div>
                               </div>
 
@@ -542,7 +505,7 @@ export default function ListaComprasPremium() {
                                       removerTarefa(tarefa.id)
                                     )
                                   }
-                                  className="text-gray-300 hover:text-red-500 ml-2 transition-colors"
+                                  className="text-gray-300 text-lg hover:text-red-500 ml-2 transition-colors cursor-pointer"
                                   aria-label="Remover item"
                                 >
                                   <FontAwesomeIcon icon={faTimes} />
@@ -563,17 +526,17 @@ export default function ListaComprasPremium() {
                                   className={`w-8 h-8 flex items-center justify-center rounded-full transition-colors ${
                                     tarefa.quantidade <= 1
                                       ? "bg-gray-100 text-gray-300 cursor-not-allowed"
-                                      : "bg-gray-100 text-gray-500 hover:bg-gray-200"
+                                      : "bg-gray-100 text-gray-500 hover:bg-gray-200 cursor-pointer"
                                   }`}
                                   disabled={tarefa.quantidade <= 1}
                                   aria-label="Diminuir quantidade"
                                 >
                                   <FontAwesomeIcon
                                     icon={faCircleMinus}
-                                    size="xs"
+                                    size="xl"
                                   />
                                 </motion.button>
-                                <span className="w-6 text-center font-medium">
+                                <span className="w-6 text-center font-medium text-gray-400">
                                   {tarefa.quantidade}
                                 </span>
                                 <motion.button
@@ -584,12 +547,12 @@ export default function ListaComprasPremium() {
                                       incrementarQuantidade(tarefa.id)
                                     )
                                   }
-                                  className="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full text-gray-500 hover:bg-gray-200 transition-colors"
+                                  className="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full text-gray-500 hover:bg-gray-200 transition-colors cursor-pointer"
                                   aria-label="Aumentar quantidade"
                                 >
                                   <FontAwesomeIcon
                                     icon={faCirclePlus}
-                                    size="xs"
+                                    size="xl"
                                   />
                                 </motion.button>
                               </div>
@@ -612,7 +575,7 @@ export default function ListaComprasPremium() {
                                       e.key === "Enter" &&
                                       handleSalvarPreco(tarefa.id)
                                     }
-                                    className="w-20 p-1 border rounded focus:ring-2 focus:ring-emerald-500"
+                                    className="w-20 text-gray-400 p-1 border rounded focus:ring-2 focus:ring-emerald-500 appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
                                     aria-label="Novo preço"
                                     min="0"
                                     step="0.01"
@@ -625,7 +588,7 @@ export default function ListaComprasPremium() {
                                         handleSalvarPreco(tarefa.id)
                                       )
                                     }
-                                    className="ml-2 text-emerald-600 hover:text-emerald-800 transition-colors"
+                                    className="ml-2 text-emerald-600 hover:text-emerald-800 transition-colors cursor-pointer"
                                     aria-label="Salvar preço"
                                   >
                                     OK
@@ -633,7 +596,7 @@ export default function ListaComprasPremium() {
                                 </motion.div>
                               ) : (
                                 <div className="flex items-center">
-                                  <span className="font-bold text-emerald-600">
+                                  <span className="font-bold text-emerald-600 ">
                                     {new Intl.NumberFormat("pt-BR", {
                                       style: "currency",
                                       currency: "BRL",
@@ -648,10 +611,10 @@ export default function ListaComprasPremium() {
                                         setNovoPreco(tarefa.valor.toString());
                                       })
                                     }
-                                    className="ml-2 text-gray-400 hover:text-emerald-600 transition-colors"
+                                    className="ml-2 text-gray-400 hover:text-emerald-600 transition-colors cursor-pointer"
                                     aria-label="Editar preço"
                                   >
-                                    <FontAwesomeIcon icon={faPen} size="xs" />
+                                    <FontAwesomeIcon icon={faPen} size="sm" />
                                   </motion.button>
                                 </div>
                               )}
