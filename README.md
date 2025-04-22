@@ -47,7 +47,7 @@ Sua lista é salva automaticamente no navegador, garantindo que você não perca
 
 ## 🌐 Acesse Agora
 
-🔗 [**Abrir Lista de Compras na Vercel**](#)  
+🔗 [**Abrir Lista de Compras na Vercel**](https://lista-de-compras-matealves.vercel.app/)  
 Sem instalação, direto do navegador!
 
 ---
