@@ -49,7 +49,7 @@ export default function TotalDisplay() {
               <span>Limite: {formatarMoeda(limite)}</span>
               <span>{progresso.toFixed(0)}%</span>
             </div>
-            <div className="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
+            <div className="w-full bg-gray-200 h-2 rounded-full overflow-hidden mb-3">
               <motion.div
                 className={`h-full ${
                   ultrapassou ? "bg-red-500" : "bg-emerald-500"

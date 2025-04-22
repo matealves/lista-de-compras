@@ -240,7 +240,7 @@ export default function ListaComprasPremium() {
               whileTap={{ scale: 0.97 }}
               type="submit"
               disabled={!novoItem.trim()}
-              className="bg-emerald-500 text-white cursor-pointer h-full p-3 rounded-xl hover:bg-emerald-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+              className="bg-emerald-500 text-white cursor-pointer h-full py-5 md:p-3 rounded-xl hover:bg-emerald-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
               aria-label="Adicionar item"
             >
               <FontAwesomeIcon icon={faPlus} className="text-lg" />
@@ -278,7 +278,7 @@ export default function ListaComprasPremium() {
                 ${
                   filtroCategoria === categoria
                     ? "border-emerald-500 bg-emerald-100 text-emerald-800"
-                    : "border-gray-300 bg-gray-50 text-gray-800 hover:bg-gray-100"
+                    : "border-gray-300 bg-gray-50 text-gray-700 hover:bg-gray-100"
                 }`}
                   >
                     <span className="truncate">{categoria}</span>

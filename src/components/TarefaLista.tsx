@@ -1,28 +1,23 @@
-'use client';
+"use client";
 
-import { useTarefas } from '../contexts/TarefaContext';
-import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faTrash, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { useTarefas } from "../contexts/TarefaContext";
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faTrash, faCheck } from "@fortawesome/free-solid-svg-icons";
 
 export default function TarefaLista() {
-  const {
-    tarefas,
-    adicionarTarefa,
-    removerTarefa,
-    toggleConcluida,
-    total
-  } = useTarefas();
-  
-  const [novoItem, setNovoItem] = useState('');
-  const [valor, setValor] = useState('');
+  const { tarefas, adicionarTarefa, removerTarefa, toggleConcluida, total } =
+    useTarefas();
+
+  const [novoItem, setNovoItem] = useState("");
+  const [valor, setValor] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!novoItem.trim()) return;
-    adicionarTarefa(novoItem, parseFloat(valor) || 0, 'Geral');
-    setNovoItem('');
-    setValor('');
+    adicionarTarefa(novoItem, parseFloat(valor) || 0, "Geral");
+    setNovoItem("");
+    setValor("");
   };
 
   return (
@@ -64,10 +59,12 @@ export default function TarefaLista() {
             Sua lista está vazia. Adicione itens acima.
           </div>
         ) : (
-          tarefas.map(tarefa => (
-            <div 
-              key={tarefa.id} 
-              className={`p-3 bg-white rounded-lg shadow transition-all ${tarefa.concluida ? 'opacity-60' : ''}`}
+          tarefas.map((tarefa) => (
+            <div
+              key={tarefa.id}
+              className={`p-3 bg-white rounded-lg shadow transition-all ${
+                tarefa.concluida ? "opacity-60" : ""
+              }`}
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
@@ -75,14 +72,25 @@ export default function TarefaLista() {
                     onClick={() => toggleConcluida(tarefa.id)}
                     className={`w-6 h-6 rounded-full border flex items-center justify-center transition-all ${
                       tarefa.concluida
-                        ? 'bg-emerald-500 border-emerald-500'
-                        : 'border-gray-300'
+                        ? "bg-emerald-500 border-emerald-500"
+                        : "border-gray-300"
                     }`}
                     title="Marcar como concluído"
                   >
-                    {tarefa.concluida && <FontAwesomeIcon icon={faCheck} className="text-white text-xs" />}
+                    {tarefa.concluida && (
+                      <FontAwesomeIcon
+                        icon={faCheck}
+                        className="text-white text-xs"
+                      />
+                    )}
                   </button>
-                  <span className={`text-sm sm:text-base ${tarefa.concluida ? 'line-through text-gray-400' : 'text-gray-800'}`}>
+                  <span
+                    className={`text-sm sm:text-base ${
+                      tarefa.concluida
+                        ? "line-through text-gray-400"
+                        : "text-gray-700"
+                    }`}
+                  >
                     {tarefa.texto}
                   </span>
                 </div>
@@ -106,7 +114,7 @@ export default function TarefaLista() {
 
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 shadow-lg">
         <div className="flex justify-between items-center">
-          <span className="font-medium text-gray-800">Total:</span>
+          <span className="font-medium text-gray-700">Total:</span>
           <span className="text-lg font-bold text-emerald-600">
             R$ {total.toFixed(2)}
           </span>

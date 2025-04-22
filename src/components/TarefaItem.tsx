@@ -56,7 +56,7 @@ export default function TarefaItem({ tarefa }: { tarefa: Tarefa }) {
 
         <span
           className={`flex-1 truncate ${
-            tarefa.concluida ? "line-through text-gray-500" : "text-gray-800"
+            tarefa.concluida ? "line-through text-gray-500" : "text-gray-700"
           } text-sm sm:text-base`}
         >
           {tarefa.texto}
@@ -72,7 +72,7 @@ export default function TarefaItem({ tarefa }: { tarefa: Tarefa }) {
           >
             {/* <FontAwesomeIcon icon={faMinus} size="lg" /> */}
           </button>
-          <span className="w-6 text-center text-gray-800 text-sm font-medium">
+          <span className="w-6 text-center text-gray-700 text-sm font-medium">
             {tarefa.quantidade}
           </span>
           <button

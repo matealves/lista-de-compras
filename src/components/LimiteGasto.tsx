@@ -52,7 +52,7 @@ export default function LimiteGasto() {
       <div className="flex items-start sm:items-center justify-between gap-3 mb-4">
         <motion.h2
           whileHover={{ scale: 1.02 }}
-          className="text-base sm:text-lg font-semibold text-gray-700 sm:text-gray-800 flex items-center gap-2"
+          className="text-base sm:text-lg font-semibold text-gray-700 sm:text-gray-700 flex items-center gap-2"
         >
           <FontAwesomeIcon icon={faChartColumn} className="text-emerald-600" />
           Limite de Gasto
